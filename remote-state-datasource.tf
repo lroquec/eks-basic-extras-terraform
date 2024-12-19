@@ -4,6 +4,6 @@ data "terraform_remote_state" "eks" {
   config = {
     bucket = "lroquec-tf"
     key    = "eks/eks-terraform.tfstate"
-    region = var.region
+    region = var.aws_region
   }
 }
