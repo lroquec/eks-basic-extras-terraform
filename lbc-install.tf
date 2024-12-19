@@ -1,5 +1,15 @@
 # Install AWS Load Balancer Controller using HELM
 
+# Datasource: AWS Load Balancer Controller IAM Policy get from aws-load-balancer-controller/ GIT Repo (latest)
+data "http" "lbc_iam_policy" {
+  url = "https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/install/iam_policy.json"
+
+  # Optional request headers
+  request_headers = {
+    Accept = "application/json"
+  }
+}
+
 # Resource: Helm Release 
 resource "helm_release" "loadbalancer_controller" {
   depends_on = [aws_iam_role.lbc_iam_role]
