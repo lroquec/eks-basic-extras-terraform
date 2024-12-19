@@ -7,6 +7,7 @@ This project implements the AWS Load Balancer Controller for EKS (Elastic Kubern
 ```
 ├── lbc-iam-policy-and-role.tf    # IAM policies and roles configuration
 ├── lbc-install.tf                # Helm chart installation
+├── ingress-class.tf             # Default ingress class configuration
 ├── shared-datasources.tf         # Shared data sources configuration
 ├── shared-locals.tf             # Local variables definition
 └── variables.tf                 # Input variables definition
@@ -36,16 +37,23 @@ The controller is installed using Helm with the following configuration:
 - Service Account: Configured with appropriate IAM role annotations
 - Region-specific ECR image repository
 
+### Ingress Class Configuration
+The project sets up a default ingress class with the following specifications:
+- Name: my-aws-ingress-class
+- Default class: Yes (marked as default ingress class)
+- Controller: ingress.k8s.aws/alb (AWS Application Load Balancer)
+- Dependencies: Requires successful installation of Load Balancer Controller
+
 ### Remote State
 The project uses an S3 backend for storing Terraform state:
 - Bucket: lroquec-tf
 - Key: eks/eks-terraform.tfstate
 
 ## Prerequisites
-- An existing EKS cluster
-- AWS CLI configured with appropriate permissions
-- Terraform installed
-- Helm installed
+- An existing EKS cluster. [You can use this repo for that purpose](https://github.com/lroquec/terraform-eks-setup.git) 
+- [AWS CLI](https://aws.amazon.com/cli/) configured with appropriate permissions
+- [Terraform](https://www.terraform.io/downloads) installed
+- [Helm](https://helm.sh/docs/intro/install/) installed
 
 ## Resource Naming Convention
 Resources are named using the pattern: `{business_division}-{environment}-{resource-specific-name}`
@@ -67,11 +75,17 @@ Resources are tagged with:
 
 ## Dependencies
 The project depends on:
-- VPC configuration and existing EKS cluster. [You can use this repo for that purpose](https://github.com/lroquec/terraform-eks-setup.git) 
+- Existing EKS cluster
+- EKS OIDC provider configuration
+- VPC configuration
 
 ## Notes
 - The Load Balancer Controller image repository URL is region-specific (configured for us-east-1)
-- The IAM policy is fetched from the official AWS Load Balancer Controller GitHub repository
+- The IAM policy is fetched from the official [AWS Load Balancer Controller GitHub repository](https://github.com/kubernetes-sigs/aws-load-balancer-controller)
 - The implementation uses Terraform's remote state functionality for accessing EKS cluster details
+- The ingress class is set as default, meaning it will be used for ingress resources that don't explicitly specify a class
 
-This documentation provides a comprehensive overview of the AWS Load Balancer Controller implementation using Terraform. For specific deployment instructions or troubleshooting, please refer to the AWS EKS documentation and the AWS Load Balancer Controller GitHub repository.
+For more information, refer to:
+- [AWS Load Balancer Controller Documentation](https://kubernetes-sigs.github.io/aws-load-balancer-controller/)
+- [EKS Workshop](https://www.eksworkshop.com/)
+- [Terraform AWS Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
