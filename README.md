@@ -67,9 +67,8 @@ Resources are tagged with:
 
 ## Dependencies
 The project depends on:
-- Existing EKS cluster
+- VPC configuration and existing EKS cluster. [Use this repo for that purpose](https://github.com/lroquec/terraform-eks-setup.git) 
 - EKS OIDC provider configuration
-- VPC configuration
 
 ## Notes
 - The Load Balancer Controller image repository URL is region-specific (configured for us-east-1)
