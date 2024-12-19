@@ -46,7 +46,7 @@ The project sets up a default ingress class with the following specifications:
 
 ### Remote State
 The project uses an S3 backend for storing Terraform state:
-- Bucket: lroquec-tf **You have to create your own.**
+- Bucket: lroquec-tf (you have to create your own).
 - Key: eks/eks-terraform.tfstate
 
 ## Prerequisites
