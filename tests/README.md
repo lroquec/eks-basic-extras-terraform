@@ -64,7 +64,7 @@ Each namespace includes a Deployment:
 - **NodePort Services**:
   - Ports:
     - External ports: `30080` (app1), `30081` (app2), `30082` (app3).
-    - Target port: `80`.
+    - Target port: `80`, `5000`.
   - **Health Check Paths**:
     - `ns-app1`: `/app1/index.html`
     - `ns-app2`: `/app2/index.html`
