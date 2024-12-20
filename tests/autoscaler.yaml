@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ca-demo-deployment
+  name: ca-test-deployment
   labels:
     app: ca-nginx
 spec:
@@ -27,7 +27,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ca-demo-service-nginx
+  name: ca-test-service-nginx
   labels:
     app: ca-nginx
 spec:
