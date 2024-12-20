@@ -8,7 +8,7 @@ This file defines a **Deployment** and a **Service** to test the Kubernetes Clus
 - **`apiVersion: apps/v1`**: Specifies the version of the Deployment API.
 - **`kind: Deployment`**: Declares a Deployment resource.
 - **Metadata**:
-  - `name: ca-demo-deployment`: The name of the Deployment.
+  - `name: ca-test-deployment`: The name of the Deployment.
   - `labels: app: ca-nginx`: Labels to identify the application.
 - **Spec**:
   - **Replicas**: `15`. The deployment starts with 15 replicas, creating enough resource demand to test the autoscaler.
@@ -27,7 +27,7 @@ This file defines a **Deployment** and a **Service** to test the Kubernetes Clus
 - **`apiVersion: v1`**: Specifies the Service API version.
 - **`kind: Service`**: Declares a LoadBalancer Service.
 - **Metadata**:
-  - `name: ca-demo-service-nginx`: The name of the Service.
+  - `name: ca-test-service-nginx`: The name of the Service.
   - Labels: Match the Deployment for traffic routing.
 - **Spec**:
   - **Type**: `LoadBalancer`. Exposes the application externally via a cloud load balancer.
@@ -84,7 +84,7 @@ Each namespace includes a Deployment:
         - Configurable via annotations (e.g., `alb.ingress.kubernetes.io/healthcheck-path`).
     - **External DNS**:
       - Automatically creates Route53 DNS records:
-        - Example: `external-dns.alpha.kubernetes.io/hostname: ingress-crossns-demo.lroquec.com`.
+        - Example: `external-dns.alpha.kubernetes.io/hostname: ingress-crossns-test.lroquec.com`.
   - **Rules**:
     - Define URL paths:
       - `/app1`: Routes traffic to `app1-nginx-nodeport-service`.

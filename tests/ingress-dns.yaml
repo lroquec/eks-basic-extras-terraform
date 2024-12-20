@@ -52,7 +52,7 @@ metadata:
   namespace: ns-app1
   annotations:
     # Load Balancer Name
-    alb.ingress.kubernetes.io/load-balancer-name: ingress-crossns-demo
+    alb.ingress.kubernetes.io/load-balancer-name: ingress-crossns-test
     # Ingress Core Settings
     #kubernetes.io/ingress.class: "alb" (OLD INGRESS CLASS NOTATION - STILL WORKS BUT RECOMMENDED TO USE IngressClass Resource)
     alb.ingress.kubernetes.io/scheme: internet-facing
@@ -72,7 +72,7 @@ metadata:
     # SSL Redirect Setting
     alb.ingress.kubernetes.io/ssl-redirect: '443'
     # External DNS - For creating a Record Set in Route53
-    external-dns.alpha.kubernetes.io/hostname: ingress-crossns-demo.lroquec.com
+    external-dns.alpha.kubernetes.io/hostname: ingress-crossns-test.lroquec.com
     # Ingress Groups
     alb.ingress.kubernetes.io/group.name: myapps.web
     alb.ingress.kubernetes.io/group.order: '10'
@@ -146,7 +146,7 @@ metadata:
     #kubernetes.io/ingress.class: "alb"
     alb.ingress.kubernetes.io/scheme: internet-facing
     # Load Balancer Name
-    alb.ingress.kubernetes.io/load-balancer-name: ingress-crossns-demo
+    alb.ingress.kubernetes.io/load-balancer-name: ingress-crossns-test
     # Health Check Settings
     alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
     alb.ingress.kubernetes.io/healthcheck-port: traffic-port
@@ -164,7 +164,7 @@ metadata:
     # SSL Redirect Setting
     alb.ingress.kubernetes.io/ssl-redirect: '443'
     # External DNS - For creating a Record Set in Route53
-    external-dns.alpha.kubernetes.io/hostname: ingress-crossns-demo.lroquec.com
+    external-dns.alpha.kubernetes.io/hostname: ingress-crossns-test.lroquec.com
     # Ingress Groups
     alb.ingress.kubernetes.io/group.name: myapps.web
     alb.ingress.kubernetes.io/group.order: '20'
@@ -238,7 +238,7 @@ metadata:
     #kubernetes.io/ingress.class: "alb"
     alb.ingress.kubernetes.io/scheme: internet-facing
     # Load Balancer Name
-    alb.ingress.kubernetes.io/load-balancer-name: ingress-crossns-demo
+    alb.ingress.kubernetes.io/load-balancer-name: ingress-crossns-test
     # Health Check Settings
     alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
     alb.ingress.kubernetes.io/healthcheck-port: traffic-port
@@ -256,7 +256,7 @@ metadata:
     # SSL Redirect Setting
     alb.ingress.kubernetes.io/ssl-redirect: '443'
     # External DNS - For creating a Record Set in Route53
-    external-dns.alpha.kubernetes.io/hostname: ingress-crossns-demo.lroquec.com
+    external-dns.alpha.kubernetes.io/hostname: ingress-crossns-test.lroquec.com
     # Ingress Groups
     alb.ingress.kubernetes.io/group.name: myapps.web
     alb.ingress.kubernetes.io/group.order: '30'
