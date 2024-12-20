@@ -189,40 +189,40 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app3-nginx-deployment
+  name: app3-flask-deployment
   labels:
-    app: app3-nginx
+    app: app3-flask
   namespace: ns-app3
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app3-nginx
+      app: app3-flask
   template:
     metadata:
       labels:
-        app: app3-nginx
+        app: app3-flask
     spec:
       containers:
-        - name: app2-nginx
-          image: stacksimplify/kubenginx:1.0.0
+        - name: app3-flask
+          image: lroquec/cicd-tests
           ports:
             - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: app3-nginx-nodeport-service
+  name: app3-flask-nodeport-service
   labels:
-    app: app3-nginx
+    app: app3-flask
   namespace: ns-app3
   annotations:
 #Important Note:  Need to add health check path annotations in service level if we are planning to use multiple targets in a load balancer
-    alb.ingress.kubernetes.io/healthcheck-path: /index.html
+    alb.ingress.kubernetes.io/healthcheck-path: /health
 spec:
   type: NodePort
   selector:
-    app: app3-nginx
+    app: app3-flask
   ports:
     - port: 80
       targetPort: 80
@@ -243,7 +243,6 @@ metadata:
     alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
     alb.ingress.kubernetes.io/healthcheck-port: traffic-port
     #Important Note:  Need to add health check path annotations in service level if we are planning to use multiple targets in a load balancer
-    #alb.ingress.kubernetes.io/healthcheck-path: /usermgmt/health-status
     alb.ingress.kubernetes.io/healthcheck-interval-seconds: '15'
     alb.ingress.kubernetes.io/healthcheck-timeout-seconds: '5'
     alb.ingress.kubernetes.io/success-codes: '200'
@@ -264,6 +263,6 @@ spec:
   ingressClassName: my-aws-ingress-class   # Ingress Class
   defaultBackend:
     service:
-      name: app3-nginx-nodeport-service
+      name: app3-flask-nodeport-service
       port:
         number: 80
