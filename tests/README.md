@@ -57,7 +57,7 @@ Each namespace includes a Deployment:
   - **Images**:
     - `ns-app1`: `stacksimplify/kube-nginxapp1:1.0.0`
     - `ns-app2`: `stacksimplify/kube-nginxapp2:1.0.0`
-    - `ns-app3`: `stacksimplify/kubenginx:1.0.0`
+    - `ns-app3`: `lroquec/cicd-tests`
   - **Replicas**: Set to `1`.
 
 ### **Services**
@@ -68,7 +68,7 @@ Each namespace includes a Deployment:
   - **Health Check Paths**:
     - `ns-app1`: `/app1/index.html`
     - `ns-app2`: `/app2/index.html`
-    - `ns-app3`: `/index.html`
+    - `ns-app3`: `/health`
 
 ### **Ingress**
 - **Ingress Resources**:
