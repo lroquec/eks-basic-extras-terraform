@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: app1-nginx
-          image: stacksimplify/kube-nginxapp1:1.0.0
+          image: lroquec/system-info
           ports:
             - containerPort: 80
 ---
@@ -35,7 +35,7 @@ metadata:
   namespace: ns-app1
   annotations:
 #Important Note:  Need to add health check path annotations in service level if we are planning to use multiple targets in a load balancer
-    alb.ingress.kubernetes.io/healthcheck-path: /app1/index.html
+    alb.ingress.kubernetes.io/healthcheck-path: /app1/index.php
 spec:
   type: NodePort
   selector:
