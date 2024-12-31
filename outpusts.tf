@@ -26,3 +26,8 @@ output "metrics_server_helm_metadata" {
   description = "Metadata Block outlining status of the deployed release."
   value       = helm_release.metrics_server_release.metadata
 }
+
+output "argocd_initial_admin_password" {
+  value     = data.kubernetes_secret.argocd_initial_password.data.password
+  sensitive = true # Marca el output como sensible para que no se muestre en los logs
+}
