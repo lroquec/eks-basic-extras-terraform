@@ -30,7 +30,7 @@ data "http" "argocd_image_updater_manifest" {
 
 # Argo CD Image Updater
 resource "kubernetes_manifest" "argocd_image_updater" {
-  depends_on = [kubernetes_namespace.argocd]
+  depends_on = [helm_release.argocd]
 
   manifest = yamldecode(data.http.argocd_image_updater_manifest.response_body)
 
@@ -55,7 +55,7 @@ resource "kubernetes_manifest" "argo_rollouts" {
 }
 
 data "kubernetes_secret" "argocd_initial_password" {
-  depends_on = [kubernetes_manifest.argocd]
+  depends_on = [helm_release.argocd]
   metadata {
     name      = "argocd-initial-admin-secret"
     namespace = "argocd"
