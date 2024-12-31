@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ca-nginx
-        image: nginx
+        image: lroquec/system-info:latest
         ports:
         - containerPort: 80
         resources:
