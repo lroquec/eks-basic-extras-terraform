@@ -7,7 +7,3 @@ configs:
 
 notifications:
   enabled: true
-  secret:
-    create: false
-  cm:
-    create: false
