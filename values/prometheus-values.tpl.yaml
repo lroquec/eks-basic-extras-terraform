@@ -1,0 +1,18 @@
+prometheus:
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: ${storage_class_name}
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: ${prometheus_storage_size}
+
+grafana:
+  persistence:
+    enabled: true
+    storageClassName: ${storage_class_name}
+    size: ${prometheus_storage_size}
+    accessModes: ["ReadWriteOnce"]
+    existingClaim: grafana-pvc
