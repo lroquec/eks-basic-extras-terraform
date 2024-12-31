@@ -5,7 +5,7 @@ resource "kubernetes_namespace" "prometheus_namespace" {
 }
 
 locals {
-  prometheus_values = templatefile("${path.module}/prometheus-values.tpl.yaml", {
+  prometheus_values = templatefile("${path.module}/values/prometheus-values.tpl.yaml", {
     storage_class_name      = var.storage_class_name
     prometheus_storage_size = var.prometheus_storage_size
   })
