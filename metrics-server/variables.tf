@@ -17,23 +17,3 @@ variable "business_division" {
   type        = string
   default     = "billing"
 }
-
-variable "prometheus_namespace" {
-  type    = string
-  default = "monitoring"
-}
-
-variable "storage_class_name" {
-  type    = string
-  default = "ebs-sc"
-}
-
-variable "prometheus_storage_size" {
-  type    = string
-  default = "10Gi"
-}
-
-variable "helm_prometheus_chart_version" {
-  type    = string
-  default = "67.5.0"
-}
