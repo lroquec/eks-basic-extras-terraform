@@ -5,3 +5,4 @@ crash.log
 .terraform/
 terraform.tfstate.backup
 *.terraform.*
+ssh-key
