@@ -24,7 +24,7 @@ resource "helm_release" "prometheus_community" {
 }
 
 resource "kubernetes_persistent_volume_claim" "grafana_pvc" {
-  depends_on = [ kubernetes_storage_class_v1.ebs_sc ]
+  depends_on = [kubernetes_storage_class_v1.ebs_sc]
   metadata {
     name      = "grafana-pvc"
     namespace = var.prometheus_namespace
